@@ -1,18 +1,12 @@
-const axios = require('axios');
-require('dotenv').config();
+const { PythonShell } = require('python-shell');
 
-async function getMedicalPrediction(data) {
-  try {
-    const response = await axios.post('https://api-inference.huggingface.co/models/your-medical-model', {
-      inputs: data,
-    }, {
-      headers: { Authorization: `Bearer ${process.env.MEDICAL_AI_API_KEY}` }
+async function runAIPrediction(data) {
+  return new Promise((resolve, reject) => {
+    PythonShell.run('ai.py', { args: [JSON.stringify(data)] }, (err, results) => {
+      if (err) reject(err);
+      resolve(JSON.parse(results[0]));
     });
-    return response.data;
-  } catch (error) {
-    console.error('AI integration error:', error);
-    return null;
-  }
+  });
 }
 
-module.exports = { getMedicalPrediction };
+module.exports = { runAIPrediction };
