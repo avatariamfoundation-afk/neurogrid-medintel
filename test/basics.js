@@ -1,30 +1,35 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
+const MedicalData = require("../models/MedicalData");
+const Agent = require("../models/Agent");
 
-describe("MedIntel Contracts", function () {
-  let medIntel, owner;
+describe("MedIntel NeuroGrid Tests", function () {
+    let medIntel, medToken;
 
-  beforeEach(async function () {
-    const MedIntel = await ethers.getContractFactory("MedIntel");
-    medIntel = await MedIntel.deploy();
-    await medIntel.deployed();
-    [owner] = await ethers.getSigners();
-  });
+    beforeEach(async function () {
+        const MedToken = await ethers.getContractFactory("MedToken");
+        medToken = await MedToken.deploy();
+        await medToken.deployed();
 
-  it("Should deploy successfully", async function () {
-    expect(medIntel.address).to.not.be.null;
-  });
+        const MedIntel = await ethers.getContractFactory("MedIntel");
+        medIntel = await MedIntel.deploy(medToken.address);
+        await medIntel.deployed();
+    });
 
-  it("Should handle basic data storage", async function () {
-    await medIntel.storeData("test data");
-    const data = await medIntel.getData();
-    expect(data).to.equal("test data");
-  });
+    it("Should encrypt medical data", function () {
+        const data = new MedicalData("123", "post-op data", "agent1");
+        data.encrypt();
+        expect(data.encrypted).to.be.true;
+    });
 
-  it("Should integrate with AI predictions (mock)", async function () {
-    // Mock AI call for testing
-    const prediction = await medIntel.getPrediction("symptoms");
-    expect(prediction).to.be.a('string');
-  });
+    it("Should manage agent tasks", function () {
+        const agent = new Agent("agent1");
+        agent.assignTask("assess recovery");
+        expect(agent.tasks.length).to.equal(1);
+    });
+
+    it("Should deploy contracts", async function () {
+        expect(medToken.address).to.not.be.null;
+        expect(medIntel.address).to.not.be.null;
+    });
 });
-```### Fully Optimized contracts/MedToken.sol for MedIntel
