@@ -1,16 +1,12 @@
-# Compliance Notes
+# Compliance Notes for MedIntel
 
 ## Overview
-MedIntel handles sensitive medical data, so compliance with regulations like HIPAA and GDPR is crucial.
+MedIntel handles post-op data with NeuroGrid's decentralized features, prioritizing privacy for biomedical research.
 
 ## Key Requirements
-- **Data Encryption**: All data is encrypted using AES (see MedicalData.js).
-- **User Consent**: Placeholder - add consent forms in frontend.
-- **Audit Logs**: Track predictions in MedicalData.js for logging.
-- **Privacy Audits**: Use ZKPs for zero-knowledge proofs to verify data without revealing it.
+- Encryption and ZKPs for data.
+- Audit logs for reproducibility.
+- Bridges to Aethera BioSync for advanced co-labs.
 
 ## Future Steps
-- Integrate legal reviews.
-- Add data retention policies.
-
-For full compliance, consult experts.
+- Full integration with NeuroGrid federation.
