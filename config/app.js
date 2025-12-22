@@ -1,35 +1,23 @@
 module.exports = {
-  // Server and API settings
   port: process.env.PORT || 3000,
-  apiTimeout: 10000,  // 10 seconds for API calls to prevent hangs
-
-  // BNB Chain and blockchain configs
+  apiTimeout: 10000,
   bnbRpcUrl: process.env.BNB_RPC_URL,
-  privateKey: process.env.PRIVATE_KEY,  // For testnet deployments only
-
-  // AI and prediction settings
-  aiApiKey: process.env.MEDICAL_AI_API_KEY,
-  aiModel: 'your-medical-model',  // Placeholder for Hugging Face model
-  cacheEnabled: true,  // Enable caching for performance
-
-  // Security and privacy
+  privateKey: process.env.PRIVATE_KEY,
+  aiApiKey: process.env.AI_API_KEY,
+  aiModel: process.env.AI_MODEL,
+  cacheEnabled: true,
   encryptionKey: process.env.ENCRYPTION_KEY,
-  zkpEnabled: false,  // Placeholder for future ZKP integration
-
-  // Networking and P2P
+  zkpEnabled: false,
   p2pPort: process.env.P2P_PORT || 3001,
-  bootstrapNodes: [process.env.BOOTSTRAP_NODE || 'default-node'],  // For decentralized connections
-
-  // Performance and limits
-  rateLimit: 10,  // Requests per minute
-  maxDataSize: 1024,  // Max KB for input data
-
-  // Scalability and future features
-  crossChainEnabled: false,  // Placeholder for Ethereum bridging
-  tokenContractAddress: null,  // For MedToken incentives
-  complianceMode: 'basic',  // 'basic' for now, 'full' for HIPAA later
-
-  // Logging and debugging
-  logLevel: 'info',  // 'debug' for development
-  enableAuditLogs: true,  // Track predictions for compliance
+  bootstrapNodes: [process.env.BOOTSTRAP_NODE],
+  rateLimit: process.env.RATE_LIMIT || 10,
+  maxDataSize: process.env.MAX_DATA_SIZE || 1024,
+  crossChainEnabled: false,
+  tokenContractAddress: null,
+  complianceMode: 'basic',
+  logLevel: process.env.LOG_LEVEL || 'info',
+  enableAuditLogs: process.env.ENABLE_AUDIT_LOGS === 'true',
+  agentCapabilities: ['assessment', 'verification'],
+  researchFederationEnabled: true,
+  bridgesToAethera: false,
 };
