@@ -1,1 +1,23 @@
+name: Tests & Coverage
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node Tests
+        run: |
+          if [ -f package.json ]; then npm install && npm test; fi
+
+      - name: Python Tests
+        run: |
+          if [ -f pyproject.toml ]; then pip install pytest pytest-cov && pytest; fi
+
+      - name: Solidity Tests
+        run: |
+          if [ -f hardhat.config.js ]; then npm install && npx hardhat test; fi
 
