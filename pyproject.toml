@@ -3,4 +3,8 @@ exclude_dirs = ["tests", "venv", ".venv"]
 skips = ["B101"]
 severity = "MEDIUM"
 confidence = "MEDIUM"
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "--cov=medintel --cov-report=term-missing --cov-fail-under=80"
+testpaths = ["tests"]
 
