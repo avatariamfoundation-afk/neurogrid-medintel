@@ -1,8 +1,4 @@
 # ARCHITECTURE.md
-
-## File Location
-`/medintel/docs/ARCHITECTURE.md`
-
 ---
 
 ## Overview
