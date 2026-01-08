@@ -2,7 +2,9 @@
 
 Deterministic Medical Intelligence → NeuroGrid Core
 
-Purpose
+---
+
+## 1. Purpose
 
 This document defines exactly how MedIntel integrates with NeuroGrid Core, validators, governance layers, and downstream consumers.
 
@@ -12,12 +14,12 @@ Hackathon-judge readable
 
 Engineer executable
 
-Production-aligned
+## 2. Production-aligned
 
 There are no implied steps.
 Every integration surface is explicit.
 
-Integration Scope
+## 3. Integration Scope
 
 MedIntel integrates with the following system layers:
 
@@ -33,7 +35,7 @@ Governance & Slashing Enforcement
 
 MedIntel does not integrate directly with end users or wallets.
 
-High-Level Integration Flow
+## High-Level Integration Flow
 [ External Data Source ]
           ↓
      MedIntel
@@ -255,7 +257,7 @@ No redesign is required to scale.
 
 Integration Philosophy
 
-MedIntel integrates under one rule:
+## MedIntel integrates under one rule:
 
 If it cannot be verified independently, it does not integrate.
 
@@ -263,7 +265,9 @@ Final Assertion
 
 This guide defines the only supported integration path.
 
-Any deviation breaks determinism, trust, or safety
+---
+
+## Any deviation breaks determinism, trust, or safety
 and is therefore considered invalid by design.
 
-End of Document
+
